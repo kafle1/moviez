@@ -9,7 +9,6 @@ import useSWR from "swr";
 import { fetcher } from "../utils/fetcher";
 import { useNavigate } from "react-router-dom";
 
-const recent = [];
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -70,9 +69,10 @@ export default function MovieSearch() {
                     aria-hidden="true"
                   />
                   <Combobox.Input
-                    className="h-12 w-full border-none outline-none bg-transparent pl-11 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm"
+                    className="  h-12 w-full border-none outline-none bg-transparent pl-11 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm"
                     placeholder="Search..."
                     onChange={(event) => setQuery(event.target.value)}
+                    autoComplete="off"
                   />
                 </div>
 
@@ -90,17 +90,16 @@ export default function MovieSearch() {
                           activeOption && "sm:h-96"
                         )}
                       >
-                        {query === "" && (
-                          <h2 className="mt-2 mb-4 text-xs font-semibold text-gray-500">
-                            Recent searches
-                          </h2>
-                        )}
                         <div className="-mx-2 text-sm text-gray-700">
                           {(query === "" ? recent : queries).map((movie) => (
                             <Combobox.Option
                               as="div"
                               key={movie.imdbID}
                               value={movie}
+                              onClick={() => {
+                                navigate(`/${movie.imdbID}`);
+                                navigate.goBack();
+                              }}
                               className={({ active }) =>
                                 classNames(
                                   "flex cursor-default select-none items-center rounded-md p-2",
@@ -112,7 +111,6 @@ export default function MovieSearch() {
                                 <>
                                   <img
                                     src={movie.Poster}
-                                    alt=""
                                     className="h-6 w-6 flex-none rounded-sm"
                                   />
                                   <span className="ml-3 flex-auto truncate">
