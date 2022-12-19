@@ -176,7 +176,7 @@ export default function HeroSection() {
             <RWebShare
               data={{
                 text: "Moviez: The Ultimate Movie Spot is a website that offers a wide selection of movies for users to browse. ",
-                url: "",
+                url: "https://moviez-kafle1.netlify.app/",
                 title: "Moviez: The Ultimate Movie Spot",
               }}
             >
