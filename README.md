@@ -12,7 +12,17 @@
 
 ### 🧑‍💻 Technologies Used
 
-- React, React Router, Tailwind, Recoil, SWR , Netlify
+- React, React Router, Tailwind CSS, Recoil, SWR, Axios
+- [OMDb API](https://www.omdbapi.com/) for movie data
+- Deployed on Netlify
+
+## Getting Started
+
+```sh
+npm install
+npm run dev
+```
+
 ## Author
 
 👤 **Niraj**
@@ -24,3 +34,8 @@
 ## Show your support
 
 Give a ⭐️ if this project helped you!
+
+## 📝 License
+
+Copyright © 2022 [Niraj Kafle](https://github.com/kafle1).<br />
+This project is [MIT](LICENSE) licensed.
