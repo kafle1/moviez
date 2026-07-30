@@ -24,9 +24,9 @@ export default function MovieDetail({ id }) {
     `https://www.omdbapi.com/?apikey=cf52487f&i=${id}`,
     fetcher
   );
-  console.log("data", data);
   if (error) return <div className="text-center mt-20" >Failed to load</div>;
   if (!data) return <div className="text-center mt-20" >Loading ...</div>;
+  if (data.Response === "False") return <div className="text-center mt-20" >{data.Error || "Movie not found"}</div>;
   if (data) {
     return (
       <div className="bg-white">

@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Combobox, Dialog, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { UsersIcon } from "@heroicons/react/24/outline";
@@ -25,7 +25,9 @@ export default function MovieSearch() {
     fetcher
   );
 
-  data && setQueries(data.Search);
+  useEffect(() => {
+    if (data) setQueries(data.Search);
+  }, [data, setQueries]);
 
   const navigate = useNavigate();
   return (
@@ -59,7 +61,7 @@ export default function MovieSearch() {
           <Combobox
             as="div"
             className="mx-auto max-w-3xl transform divide-y divide-gray-100 overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all"
-            onChange={(movie) => (window.location = movie.Poster)}
+            onChange={(movie) => navigate(`/${movie.imdbID}`)}
           >
             {({ activeOption }) => (
               <>
@@ -91,15 +93,12 @@ export default function MovieSearch() {
                         )}
                       >
                         <div className="-mx-2 text-sm text-gray-700">
-                          {(query === "" ? recent : queries).map((movie) => (
+                          {queries.map((movie) => (
                             <Combobox.Option
                               as="div"
                               key={movie.imdbID}
                               value={movie}
-                              onClick={() => {
-                                navigate(`/${movie.imdbID}`);
-                                navigate.goBack();
-                              }}
+                              onClick={() => navigate(`/${movie.imdbID}`)}
                               className={({ active }) =>
                                 classNames(
                                   "flex cursor-default select-none items-center rounded-md p-2",

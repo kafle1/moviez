@@ -1,4 +1,6 @@
 export default function Reviews({ ratings }) {
+  if (!ratings) return null;
+
   return (
     <div>
       <h3 className="text-lg leading-6 font-medium text-red-600">
