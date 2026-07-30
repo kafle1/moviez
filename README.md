@@ -10,6 +10,10 @@
 
 ### 🏠 [Homepage](https://moviez-kafle1.netlify.app/)
 
+### 📸 Screenshot
+
+![Moviez screenshot](docs/screenshot.png)
+
 ### 🧑‍💻 Technologies Used
 
 - React, React Router, Tailwind CSS, Recoil, SWR, Axios
